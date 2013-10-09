@@ -29,6 +29,13 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :test, :development do
+  gem 'qunit-rails'
+  gem 'pry-rails'
+  gem 'quiet_assets'
+  gem 'minitest-matchers'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -40,10 +47,7 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
-  gem 'quiet_assets'
-  gem 'pry-rails'
-  gem 'ember-source'
-  gem 'emblem-rails'
-  gem 'slim'
+gem 'ember-source'
+gem 'emblem-rails'
+gem 'slim'
 
