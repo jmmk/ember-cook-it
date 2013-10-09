@@ -1,0 +1,27 @@
+nav.top-bar
+  ul.title-area.hide-for-small
+    li.name
+      h1.light-on-dark = link-to 'recipes.index' | Cook-it
+
+  section.top-bar-section
+    ul.right.hide-for-medium-down
+      li.divider
+      li = link-to 'recipes.index' | Home
+      li.divider
+      li = link-to 'recipes.index' | About
+      li.divider
+      li = link-to 'recipes.index' | FAQ
+      li.divider
+      li = link-to 'recipes.index' | Sign Up
+      li.divider
+      li = link-to 'recipes.index' | Sign In
+      li.divider
+
+    ul.right.show-for-medium-down
+      li.has-dropdown = link-to 'recipes.index' | Menu
+        ul.dropdown
+          li = link-to 'recipes.index' | Home
+          li = link-to 'recipes.index' | About
+          li = link-to 'recipes.index' | FAQ
+          li = link-to 'recipes.index' | Sign Up
+          li = link-to 'recipes.index' | Sign In

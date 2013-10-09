@@ -52,4 +52,6 @@ end
 gem 'ember-source'
 gem 'emblem-rails'
 gem 'slim'
+gem 'compass-rails'
+gem 'zurb-foundation'
 
