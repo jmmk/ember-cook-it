@@ -1,0 +1,10 @@
+# Read about fixtures at
+# http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  pantry_id: 1
+  ingredient_id: 1
+
+two:
+  pantry_id: 1
+  ingredient_id: 1

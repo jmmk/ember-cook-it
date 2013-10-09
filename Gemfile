@@ -33,7 +33,9 @@ group :test, :development do
   gem 'qunit-rails'
   gem 'pry-rails'
   gem 'quiet_assets'
+  gem 'minitest-rails'
   gem 'minitest-matchers'
+  gem 'valid_attribute'
 end
 
 # Use ActiveModel has_secure_password
