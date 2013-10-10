@@ -1,4 +1,5 @@
 class Api::V1::RecipesController < ApplicationController
+  respond_to :json
 
   def index
     render json: Recipe.all
@@ -6,7 +7,7 @@ class Api::V1::RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    render json: @lesson, include: []
+    render json: @recipe, include: []
   end
 
   protected

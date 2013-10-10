@@ -14,9 +14,11 @@
           .large-6.columns
             .panel.radius
               h1.dark-on-light Recent Recipes
-              h2 TITLE
-              p INGREDIENT
-              p ...
+              = each recipe in controller
+                h2 = recipe.title
+                h2 = recipe.directions
+                p INGREDIENTS
+                p ...
 
           .large-6.columns
             img src='assets/gramsay.jpg'
