@@ -3,3 +3,4 @@
     = form-for controller
       = input title
       = input directions
+      = submit

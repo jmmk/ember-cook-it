@@ -1,3 +1,3 @@
 App.RecipesNewRoute = Ember.Route.extend
   model: ->
-    @get('store').createRecord('recipe')
+    @get('store').createRecord 'recipe'

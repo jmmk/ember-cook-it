@@ -18,7 +18,8 @@ nav.top-bar
       li.divider
 
     ul.right.show-for-medium-down
-      li.has-dropdown = link-to 'recipes' | Menu
+      li.has-dropdown
+        = link-to 'recipes' | Menu
         ul.dropdown
           li = link-to 'recipes' | Home
           li = link-to 'recipes' | About
