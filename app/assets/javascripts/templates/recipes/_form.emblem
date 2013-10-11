@@ -1,0 +1,4 @@
+.row
+  .large-6.columns
+    = form-for controller
+      = input title

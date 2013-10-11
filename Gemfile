@@ -50,6 +50,7 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 gem 'ember-source'
+gem 'ember-rails'
 gem 'emblem-rails'
 gem 'slim'
 gem 'compass-rails'

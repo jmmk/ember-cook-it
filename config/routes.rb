@@ -1,7 +1,7 @@
 EmberCookIt::Application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :recipes, only: :index
+      resources :recipes, only: [:index, :show, :create]
     end
   end
 

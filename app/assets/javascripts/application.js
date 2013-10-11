@@ -16,6 +16,7 @@
 //= require handlebars
 //= require ember
 //= require ember-data
+//= require ember-easyForm-1.0.0.beta.1
 //= require_self
 //= require app
 
@@ -33,6 +34,7 @@ App.ApplicationAdapter = DS.ActiveModelAdapter.extend({
 })
 App.ApplicationSerializer = DS.ActiveModelSerializer.extend()
 
-//= require_tree .
+
+
 
 

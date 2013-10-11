@@ -7,7 +7,16 @@ class Api::V1::RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    render json: @recipe, include: []
+    render json: @recipe, include: [:ingredients]
+  end
+
+  def create
+    @recipe = Recipe.new(recipe_params)
+
+    if @recipe.save
+      render json: @recipe
+    else
+    end
   end
 
   protected

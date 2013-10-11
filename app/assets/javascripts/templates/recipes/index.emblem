@@ -6,19 +6,20 @@
     form
       = input type='search' placeholder='Search Recipes...'
 
-  .row
-    .large-12.columns
-      .panel.radius
+.row
+  .large-12.columns
+    .panel.radius
 
-        .row
-          .large-6.columns
-            .panel.radius
-              h1.dark-on-light Recent Recipes
-              = each recipe in controller
-                h2 = recipe.title
-                h2 = recipe.directions
-                p INGREDIENTS
-                p ...
+      .row
+        .large-6.columns
+          .panel.radius
+            h1.dark-on-light Recent Recipes
+            = each controller
+              h2 = link-to 'recipe' this
+                = title
+              h2 = directions
+              p INGREDIENTS
+              p ...
 
-          .large-6.columns
-            img src='assets/gramsay.jpg'
+        .large-6.columns
+          img src='assets/gramsay.jpg'

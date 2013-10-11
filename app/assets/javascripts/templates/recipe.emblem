@@ -1,0 +1,14 @@
+.row
+  .large-6.large-offset-1.columns
+    h2 = title
+
+    = each ingredients
+      p = name
+
+    h3 Directions:
+    p = directions
+
+    p
+      = link-to 'recipes' | Edit Recipe |
+      = link-to '' |  Delete Recipe |
+      = link-to 'recipes' |  Back to Recipes

@@ -167,6 +167,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   compass-rails
+  ember-rails
   ember-source
   emblem-rails
   jbuilder (~> 1.2)

@@ -1,0 +1,4 @@
+.row
+  .large-12.columns
+    h1.dark-on-light Create New Recipe
+    = partial 'recipes/form'
