@@ -1,0 +1,4 @@
+.row
+  .large-12.columns
+    h1.dark-on-light Edit Recipe
+    = partial 'recipes/form'

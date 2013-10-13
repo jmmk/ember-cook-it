@@ -1,12 +1,13 @@
 class Api::V1::RecipesController < ApplicationController
+  before_filter :set_recipe, only: [:show, :destroy, :update]
   respond_to :json
 
   def index
-    render json: Recipe.all
+    render json: Recipe.order('created_at DESC').limit(5),
+      include: [:ingredients]
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
     render json: @recipe, include: [:ingredients]
   end
 
@@ -14,14 +15,32 @@ class Api::V1::RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
 
     if @recipe.save
-      render json: @recipe
+      render json: @recipe, status: :created
     else
+      render status: 422
+    end
+  end
+
+  def destroy
+    @recipe.destroy
+    render json: @recipe, status: 204
+  end
+
+  def update
+    if @recipe.update(recipe_params)
+      render json: @recipe, status: :ok
+    else
+      render status: 422
     end
   end
 
   protected
 
   def recipe_params
-    params.require(:recipe).permit(:title, :directions)
+    params.require(:recipe).permit(:title, :directions, ingredients_attributes: [:name])
+  end
+
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
   end
 end

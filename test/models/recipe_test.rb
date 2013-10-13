@@ -11,7 +11,8 @@ describe Recipe do
 
   describe 'associations' do
 
-    it 'has many ingredients' do
+    it 'has many recipe_ingredients' do
+      skip 'Use simpler one-to-many for now'
       subject.must_respond_to :recipe_ingredients
     end
     it 'has many ingredients' do

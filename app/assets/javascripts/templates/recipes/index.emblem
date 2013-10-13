@@ -15,11 +15,9 @@
           .panel.radius
             h1.dark-on-light Recent Recipes
             = each controller
-              h2 = link-to 'recipe' this
+              h2 = link-to 'recipes.show' this
                 = title
-              h2 = directions
-              p INGREDIENTS
-              p ...
-
+              p = each ingredients
+                p = name
         .large-6.columns
           img src='assets/gramsay.jpg'

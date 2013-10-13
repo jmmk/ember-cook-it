@@ -1,3 +1,6 @@
 App.RecipesNewRoute = Ember.Route.extend
   model: ->
-    @get('store').createRecord 'recipe'
+    @store.createRecord('recipe')
+
+  deactivate: ->
+    @controllerFor('recipes.new').stopEditing()

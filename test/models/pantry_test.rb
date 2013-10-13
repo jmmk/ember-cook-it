@@ -15,6 +15,7 @@ describe Pantry do
       subject.must_respond_to :ingredients
     end
     it 'has many pantry ingredients' do
+      skip 'Use simpler one-to-many for now'
       subject.must_respond_to :pantry_ingredients
     end
   end

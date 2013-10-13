@@ -1,4 +1,4 @@
-App.RecipesNewController = Ember.ObjectController.extend(
+App.RecipesEditController = Ember.ObjectController.extend(
   Ember.Validations.Mixin,
 
   stopEditing: ->
@@ -11,7 +11,7 @@ App.RecipesNewController = Ember.ObjectController.extend(
       recipe = @content
       ingredients = recipe.get('ingredients')
 
-      recipe.one 'didCreate', this, ->
+      recipe.one 'didUpdate', this, ->
         @set('content', null)
         @transitionToRoute('recipes.show', recipe)
       ingredients.invoke('save')

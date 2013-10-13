@@ -1,4 +1,2 @@
-App.Pantry = DS.Model.extend
+App.Pantry = App.Element.extend
   user: DS.belongsTo('user')
-
-  ingredients: DS.hasMany('ingredient', async: true)

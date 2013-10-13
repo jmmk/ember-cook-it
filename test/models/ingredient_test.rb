@@ -9,19 +9,27 @@ describe Ingredient do
   describe 'associations' do
 
     it 'has many recipe_ingredients' do
+      skip 'Use simpler one-to-many for now'
       subject.must_respond_to :recipe_ingredients
     end
 
     it 'has many pantry_ingredients' do
+      skip 'Use simpler one-to-many for now'
       subject.must_respond_to :pantry_ingredients
     end
 
     it 'has many recipes' do
+      skip 'Use simpler one-to-many for now'
       subject.must_respond_to :recipes
     end
 
     it 'has many pantries' do
+      skip 'Use simpler one-to-many for now'
       subject.must_respond_to :pantries
+    end
+
+    it 'belongs to cooking' do
+      subject.must_respond_to :cooking
     end
   end
 end

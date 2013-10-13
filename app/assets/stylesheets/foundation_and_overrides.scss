@@ -149,7 +149,7 @@ $default-float: left;
 // Grid Variables
 //
 
-// $row-width: em-calc(1000);
+$row-width: em-calc(1200);
 // $column-gutter: em-calc(30);
 // $total-columns: 12;
 
@@ -1255,13 +1255,13 @@ $default-float: left;
 
 // Background color for the top bar
 
-// $topbar-bg-color: #111;
+$topbar-bg-color: #002A4A;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
 
 // $topbar-height: 45px;
-// $topbar-margin-bottom: 0;
+$topbar-margin-bottom: 2em;
 
 // Control Input height for top bar
 
@@ -1270,13 +1270,13 @@ $default-float: left;
 // Controlling the styles for the title in the top bar
 
 // $topbar-title-weight: bold;
-// $topbar-title-font-size: em-calc(17);
+$topbar-title-font-size: em-calc(40);
 
 // Style the top bar dropdown elements
 
-// $topbar-dropdown-bg: #222;
+$topbar-dropdown-bg: #002A4A;
 // $topbar-dropdown-link-color: #fff;
-// // $topbar-dropdown-link-bg: lighten($topbar-bg-color, 5%);
+$topbar-dropdown-link-bg: lighten($topbar-bg-color, 0%);
 // $topbar-dropdown-toggle-size: 5px;
 // $topbar-dropdown-toggle-color: #fff;
 // $topbar-dropdown-toggle-alpha: 0.5;
@@ -1284,13 +1284,13 @@ $default-float: left;
 // Set the link colors and styles for top-level nav
 
 // $topbar-link-color: #fff;
-// $topbar-link-color-hover: #fff;
+// $topbar-link-color-hover: darken($topbar-bg-color, 10%);
 // $topbar-link-color-active: #fff;
 // $topbar-link-weight: bold;
 // $topbar-link-font-size: em-calc(13);
-// $topbar-link-hover-lightness: -30%; // Darken by 30%
+$topbar-link-hover-lightness: 5%; // Darken by 30%
 // $topbar-link-bg-hover: darken($topbar-bg-color, 3%);
-// $topbar-link-bg-active: darken($topbar-bg-color, 3%);
+// $topbar-link-bg-active: lighten($topbar-bg-color, 5%);
 
 // $topbar-dropdown-label-color: #555;
 // $topbar-dropdown-label-text-transform: uppercase;
@@ -1311,7 +1311,7 @@ $default-float: left;
 // Transitions and breakpoint styles
 
 // $topbar-transition-speed: 300ms;
-// $topbar-breakpoint: 940 !default; // Change to 9999px for always mobile layout
+// $topbar-breakpoint: 768 !default; // Change to 9999px for always mobile layout
 // $topbar-media-query: "only screen and (min-width: #{$topbar-breakpoint})";
 
 // Divider Styles

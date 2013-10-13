@@ -1,6 +1,34 @@
 .row
   .large-6.columns
-    = form-for controller
-      = input title
-      = input directions
-      = submit
+    form
+      .row
+        .large-11.columns
+
+          h3
+            label * Title
+          = input valueBinding='title'
+
+      .row
+        .large-12.columns
+          h3
+            label Ingredients
+
+      = each ingredients
+        .row
+          .large-11.columns
+            = input valueBinding='name'
+          .large-1.columns
+            button.tiny.radius{action 'removeIngredient' this}
+              |Remove
+
+      button.tiny.radius{action 'addIngredient'}
+        |Add Ingredient
+
+      .row
+        .large-11.columns
+          h3
+            label * Directions
+          = textarea valueBinding='directions'
+
+          button.small.radius.right{action 'submit'} disabled=isInvalid
+            |Save Recipe

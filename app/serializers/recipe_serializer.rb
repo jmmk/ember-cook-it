@@ -1,5 +1,5 @@
 class RecipeSerializer < ActiveModel::Serializer
-  embed :ids
+  embed :ids, include: true
 
   attributes :id, :title, :directions
 
