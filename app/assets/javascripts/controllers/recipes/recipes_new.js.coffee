@@ -1,10 +1,11 @@
 App.RecipesNewController = Ember.ObjectController.extend(
   Ember.Validations.Mixin,
 
-  stopEditing: ->
-    if (@content)
-      @content.rollback()
-      @set('content', null)
+  clearUnsavedChanges: ->
+    @content.get('ingredients').invoke('rollback')
+    # @content.set('ingredients', null)
+    @content.rollback()
+    # @set('content', null)
 
   actions:
     submit: ->
@@ -12,19 +13,18 @@ App.RecipesNewController = Ember.ObjectController.extend(
       ingredients = recipe.get('ingredients')
 
       recipe.one 'didCreate', this, ->
-        @set('content', null)
         @transitionToRoute('recipes.show', recipe)
-      ingredients.invoke('save')
-      recipe.save()
+
+      recipe.save().then ->
+        ingredients.invoke('save')
 
     addIngredient: ->
       ingredient = @store.createRecord('ingredient')
       @content.get('ingredients').pushObject(ingredient)
 
     removeIngredient: (ingredient) ->
-      ingredient.deleteRecord()
-      ingredient.save()
       @content.get('ingredients').removeObject(ingredient)
+      ingredient.deleteRecord()
 
   validations:
     title:

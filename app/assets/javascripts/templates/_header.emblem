@@ -8,10 +8,6 @@ nav.top-bar
       li.divider
       li = link-to 'recipes' | Home
       li.divider
-      li = link-to 'recipes' | About
-      li.divider
-      li = link-to 'recipes' | FAQ
-      li.divider
       li = link-to 'recipes' | Sign Up
       li.divider
       li = link-to 'recipes' | Sign In
@@ -22,7 +18,5 @@ nav.top-bar
         = link-to 'recipes' | Menu
         ul.dropdown
           li = link-to 'recipes' | Home
-          li = link-to 'recipes' | About
-          li = link-to 'recipes' | FAQ
           li = link-to 'recipes' | Sign Up
           li = link-to 'recipes' | Sign In

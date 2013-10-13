@@ -36,6 +36,7 @@ group :test, :development do
   gem 'minitest-rails'
   gem 'minitest-matchers'
   gem 'valid_attribute'
+  gem 'better_errors'
 end
 
 # Use ActiveModel has_secure_password
