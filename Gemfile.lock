@@ -36,9 +36,6 @@ GEM
     barber-emblem (0.1.1)
       barber (>= 0.4.1)
       emblem-source
-    better_errors (1.0.1)
-      coderay (>= 1.0.0)
-      erubis (>= 2.6.6)
     builder (3.1.4)
     chunky_png (1.2.8)
     coderay (1.0.9)
@@ -166,7 +163,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  better_errors
   coffee-rails (~> 4.0.0)
   compass-rails (~> 2.0.alpha.0)
   ember-data-source (~> 1.0.0.beta.3)

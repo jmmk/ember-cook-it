@@ -10,9 +10,6 @@ App.RecipesNewController = Ember.ObjectController.extend(
       recipe = @content
       ingredients = recipe.get('ingredients')
 
-      recipe.one 'didCreate', this, ->
-        @transitionToRoute('recipes.show', recipe)
-
       recipe.save().then ->
         ingredients.forEach( (ingredient) ->
           if !ingredient.get('name')
@@ -21,13 +18,18 @@ App.RecipesNewController = Ember.ObjectController.extend(
             ingredient.save()
         )
 
+      @transitionToRoute('recipes.show', recipe)
+
     addIngredient: ->
-      ingredient = @store.createRecord('ingredient')
+      ingredient = @store.createRecord('ingredient', name: 'New Ingredient')
       @content.get('ingredients').pushObject(ingredient)
 
     removeIngredient: (ingredient) ->
       @content.get('ingredients').removeObject(ingredient)
       ingredient.deleteRecord()
+
+    cancel: ->
+      @transitionToRoute('recipes.index')
 
   validations:
     title:

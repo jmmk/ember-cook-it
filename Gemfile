@@ -35,7 +35,6 @@ group :test, :development do
   gem 'quiet_assets'
   gem 'minitest-rails'
   gem 'valid_attribute'
-  gem 'better_errors'
 end
 
 # Use ActiveModel has_secure_password

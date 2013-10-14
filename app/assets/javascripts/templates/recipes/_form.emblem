@@ -30,5 +30,7 @@
             label * Directions
           = textarea valueBinding='directions'
 
+          button.small.radius.right{action 'cancel'}
+            |Cancel
           button.small.radius.right{action 'submit'} disabled=isInvalid
             |Save Recipe
