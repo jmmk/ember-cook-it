@@ -4,6 +4,8 @@ EmberCookIt::Application.routes.draw do
     namespace :v1 do
       resources :recipes, not: [:new, :edit]
       resources :ingredients, only: [:create, :update, :destroy]
+      resources :users, only: [:create]
+      resources :sessions, only: [:create, :destroy]
     end
   end
 
