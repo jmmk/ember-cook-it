@@ -1,12 +1,11 @@
 require "test_helper"
 
 describe User do
-  subject { User.new }
+  before do
+    @user = User.new
+  end
 
-  describe 'associations' do
-
-    it 'has one pantry' do
-      subject.must_respond_to :pantry
-    end
+  it "must be valid" do
+    @user.valid?.must_equal true
   end
 end
