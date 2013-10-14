@@ -6,10 +6,7 @@ App.RecipesEditController = Ember.ObjectController.extend(
   clearUnsavedChanges: ->
     @deletions.forEach( (ingredient) -> ingredient.rollback() )
     @content.rollback()
-    # @content.get('ingredients').forEach ( (ingredient) ->
-    #   if !ingredient.get('name')
-    #     ingredient.deleteRecord()
-    # )
+    # @content.get('ingredients').invoke('rollback')
 
 
   actions:

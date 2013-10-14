@@ -3,9 +3,7 @@ App.RecipesNewController = Ember.ObjectController.extend(
 
   clearUnsavedChanges: ->
     @content.get('ingredients').invoke('rollback')
-    # @content.set('ingredients', null)
     @content.rollback()
-    # @set('content', null)
 
   actions:
     submit: ->
@@ -16,7 +14,12 @@ App.RecipesNewController = Ember.ObjectController.extend(
         @transitionToRoute('recipes.show', recipe)
 
       recipe.save().then ->
-        ingredients.invoke('save')
+        ingredients.forEach( (ingredient) ->
+          if !ingredient.get('name')
+            ingredient.deleteRecord()
+          else
+            ingredient.save()
+        )
 
     addIngredient: ->
       ingredient = @store.createRecord('ingredient')

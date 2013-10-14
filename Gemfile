@@ -34,7 +34,6 @@ group :test, :development do
   gem 'pry-rails'
   gem 'quiet_assets'
   gem 'minitest-rails'
-  gem 'minitest-matchers'
   gem 'valid_attribute'
   gem 'better_errors'
 end
@@ -52,6 +51,7 @@ end
 # gem 'debugger', group: [:development, :test]
 gem 'ember-source'
 gem 'ember-rails'
+gem "ember-data-source", "~> 1.0.0.beta.3"
 gem 'emblem-rails'
 gem 'slim'
 gem 'compass-rails', "~> 2.0.alpha.0"
