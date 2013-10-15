@@ -2,6 +2,6 @@ App.RecipesNewRoute = Ember.Route.extend
   model: ->
     @store.createRecord('recipe')
 
-  action:
+  actions:
     willTransition: (transition) ->
       @controllerFor('recipes.new').clearUnsavedChanges()

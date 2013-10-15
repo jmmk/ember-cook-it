@@ -8,10 +8,14 @@ nav.top-bar
       li.divider
       li = link-to 'recipes' | Home
       li.divider
-      li = link-to 'recipes' | Sign Up
-      li.divider
-      li = link-to 'recipes' | Sign In
-      li.divider
+      if currentUser.isSignedIn
+        li = link-to 'sessions.destroy' | Sign Out
+        li.divider
+      else
+        li = link-to 'users.new' | Sign Up
+        li.divider
+        li = link-to 'sessions.new' | Sign In
+        li.divider
 
     ul.right.show-for-medium-down
       li.has-dropdown

@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20131014213254) do
   enable_extension "plpgsql"
 
   create_table "ingredients", force: true do |t|
-    t.string   "name",         null: false
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "element_id"

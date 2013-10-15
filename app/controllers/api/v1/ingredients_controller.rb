@@ -1,6 +1,6 @@
 class Api::V1::IngredientsController < ApplicationController
   before_filter :set_ingredient, only: [:update, :destroy]
-    respond_to :json
+  respond_to :json
 
   def create
     @ingredient = Ingredient.new(ingredient_params)

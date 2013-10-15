@@ -7,5 +7,5 @@ App.SessionsDestroyRoute = Ember.Route.extend
       session.deleteRecord()
       session.save()
 
-    @transitionTo('recipes.index')
+    @transitionToRoute('recipes.index')
 

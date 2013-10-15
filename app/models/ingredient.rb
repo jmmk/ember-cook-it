@@ -6,6 +6,4 @@ class Ingredient < ActiveRecord::Base
   # has_many :pantries, through: :pantry_ingredients
 
   belongs_to :element, polymorphic: true
-
-  validates_presence_of :name
 end

@@ -1,3 +1,7 @@
 App.UsersNewRoute = Ember.Route.extend
   model: ->
-    @get('store')createRecord('user')
+    @store.createRecord('user')
+
+  actions:
+    willTransition: ->
+      @controllerFor('users.new').clearUnsavedChanges()

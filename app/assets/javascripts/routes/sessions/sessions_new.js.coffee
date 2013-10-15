@@ -1,3 +1,7 @@
 App.SessionsNewRoute = Ember.Route.extend
   model: ->
-    @get('store').createRecord('session')
+    @store.createRecord('session')
+
+  actions:
+    willTransition: ->
+      @controllerFor('sessions.new').clearUnsavedChanges()
