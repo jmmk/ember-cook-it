@@ -1,4 +1,5 @@
 App.RecipesShowController = Ember.ObjectController.extend
+
   actions:
     delete: ->
       recipe = @get('content')

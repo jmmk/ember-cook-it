@@ -8,7 +8,7 @@ nav.top-bar
       li.divider
       li = link-to 'recipes' | Home
       li.divider
-      if currentUser.isSignedIn
+      if controllers.currentUser.isSignedIn
         li = link-to 'sessions.destroy' | Sign Out
         li.divider
       else

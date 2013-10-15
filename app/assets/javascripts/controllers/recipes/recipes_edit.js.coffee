@@ -11,6 +11,7 @@ App.RecipesEditController = Ember.ObjectController.extend(
 
   actions:
     submit: ->
+      self = this
       recipe = @content
       ingredients = recipe.get('ingredients')
 
@@ -22,8 +23,7 @@ App.RecipesEditController = Ember.ObjectController.extend(
       ingredients.forEach (ingredient) ->
         ingredient.save() if ingredient.get('isDirty')
       .then ->
-        controller = App.__container__.lookup('controller:recipes_new')
-        controller.transitionToRoute('recipes.show', recipe)
+        self.transitionToRoute('recipes.show', recipe)
 
     addIngredient: ->
       ingredient = @store.createRecord('ingredient')

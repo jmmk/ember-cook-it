@@ -6,7 +6,7 @@ class Api::UsersController < ApplicationController
     if user.save
       render json: user, status: :created
     else
-      render json: user
+      render status: 422
     end
   end
 

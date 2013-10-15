@@ -5,8 +5,9 @@ App.UsersNewController = Ember.ObjectController.extend
 
   actions:
     submit: ->
+      self = this
       @content.save().then ->
-        @transitiontoRoute('recipes.index')
+        self.transitionToRoute('sessions.new')
 
     cancel: ->
       @transitiontoRoute('recipes.index')

@@ -1,11 +1,11 @@
 EmberCookIt::Application.routes.draw do
 
   namespace :api do
-    devise_for :users, controllers: {sessions: 'sessions' }
     resources :recipes, not: [:new, :edit]
     resources :ingredients, only: [:create, :update, :destroy]
     resources :users, only: [:create]
     resources :sessions, only: [:create, :destroy]
+    get 'sessions/current' => 'sessions#show'
   end
 
   root 'home#index'

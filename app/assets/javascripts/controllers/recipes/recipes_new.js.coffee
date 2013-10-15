@@ -8,14 +8,14 @@ App.RecipesNewController = Ember.ObjectController.extend(
 
   actions:
     submit: ->
+      self = this
       recipe = @content
       ingredients = recipe.get('ingredients')
 
       recipe.save().then ->
         ingredients.invoke('save')
       .then ->
-        controller = App.__container__.lookup('controller:recipes_new')
-        controller.transitionToRoute('recipes.show', recipe)
+        self.transitionToRoute('recipes.show', recipe)
 
     addIngredient: ->
       ingredient = @store.createRecord('ingredient')
