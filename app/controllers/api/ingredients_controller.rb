@@ -28,7 +28,7 @@ class Api::IngredientsController < ApplicationController
   protected
 
   def ingredient_params
-    params.require(:ingredient).permit(:name, :element_id, :element_type)
+    params.require(:ingredient).permit(:name)
   end
 
   def set_ingredient

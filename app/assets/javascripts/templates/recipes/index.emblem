@@ -17,7 +17,7 @@
             = each controller
               h2 = link-to 'recipes.show' this
                 = title
-              p = each ingredients
-                p = name
+              p = each recipeIngredients
+                p = ingredientName
         .large-6.columns
           img src='assets/gramsay.jpg'
