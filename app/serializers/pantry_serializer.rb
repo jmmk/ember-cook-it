@@ -3,5 +3,5 @@ class PantrySerializer < ActiveModel::Serializer
 
   attributes :id
 
-  has_many :ingredients
+  has_many :pantry_ingredients
 end

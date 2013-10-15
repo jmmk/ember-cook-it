@@ -4,6 +4,4 @@ class Ingredient < ActiveRecord::Base
 
   has_many :pantry_ingredients, inverse_of: :ingredient, dependent: :destroy
   has_many :pantries, through: :pantry_ingredients
-
-  belongs_to :element, polymorphic: true
 end

@@ -1,4 +1,5 @@
 App.Ingredient = DS.Model.extend
-  element: DS.belongsTo('element', polymorphic: true, inverse: 'ingredients')
+  pantries: DS.hasMany('pantry', inverse: 'ingredients')
+  recipes: DS.hasMany('recipe', inverse: 'ingredients')
 
   name: DS.attr()

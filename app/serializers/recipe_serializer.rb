@@ -1,11 +1,7 @@
 class RecipeSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
-  attributes :id, :title, :directions#, :ingredient_name
+  attributes :id, :title, :directions
 
-  has_many :ingredients
-
-  # def ingredient_name
-  #   object.ingredient.name
-  # end
+  has_many :recipe_ingredients
 end
