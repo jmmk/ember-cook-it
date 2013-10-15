@@ -4,7 +4,6 @@ class Api::UsersController < ApplicationController
   def create
     user = User.new(user_params)
     if user.save
-      Pantry.create(user_id: user.id)
       render json: user, status: :created
     else
       render status: 422
