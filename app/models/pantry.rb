@@ -1,8 +1,7 @@
 class Pantry < ActiveRecord::Base
   belongs_to :user, inverse_of: :pantry
 
-  # has_many :pantry_ingredients, inverse_of: :pantry, dependent: :destroy
-  has_many :ingredients, as: :element, dependent: :destroy#, through: :pantry_ingredients
+  has_many :ingredients, as: :element, dependent: :destroy
 
   validates_presence_of :user
 end

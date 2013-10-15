@@ -18,28 +18,14 @@ ActiveRecord::Schema.define(version: 20131014213254) do
 
   create_table "ingredients", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.integer  "element_id"
     t.string   "element_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "pantries", force: true do |t|
     t.integer  "user_id",    null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "pantry_ingredients", force: true do |t|
-    t.integer  "pantry_id",     null: false
-    t.integer  "ingredient_id", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "recipe_ingredients", force: true do |t|
-    t.integer  "recipe_id",     null: false
-    t.integer  "ingredient_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
