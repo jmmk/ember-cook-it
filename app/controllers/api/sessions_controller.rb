@@ -3,7 +3,7 @@ class Api::SessionsController < ApplicationController
 
   def create
     user = User.find_for_database_authentication(email: session_params['email'])
-
+    User.serialize_into_cookie(user)
     if user && user.valid_password?(session_params['password'])
       sign_in :user, user
       render json: { session: { id: user.id, email: user.email } }, status: :created
@@ -22,8 +22,11 @@ class Api::SessionsController < ApplicationController
   end
 
   def show
-    user = User.find(params[:id])
-    render json: user
+    if user_signed_in?
+      render json: current_user
+    else
+      render nothing: true
+    end
   end
 
   def session_params

@@ -11,6 +11,14 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def show
+    if user_signed_in?
+      render json: current_user
+    else
+      render nothing: true
+    end
+  end
+
   protected
 
   def user_params
