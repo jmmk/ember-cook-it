@@ -1,0 +1,29 @@
+.row
+  .large-6.columns
+    form
+      .row
+        .large-11.columns
+
+      .row
+        .large-12.columns
+          h3
+            label Ingredients
+
+      = each ingredients
+        .row
+          .large-11.columns
+            = input valueBinding='name' placeholder='New Ingredient'
+          .large-1.columns
+            button.tiny.radius{action 'removeIngredient' this}
+              |Remove
+
+      button.tiny.radius{action 'addIngredient'}
+        |Add Ingredient
+
+      .row
+        .large-11.columns
+          button.small.radius.right{action 'submit'}
+            |Save Pantry
+          button.small.radius.right{action 'cancel'}
+            |Cancel
+
