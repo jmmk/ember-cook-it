@@ -2,7 +2,7 @@ App.SessionsNewController = Ember.ObjectController.extend
   needs: 'currentUser'
 
   clearUnsavedChanges: ->
-    @content.deleteRecord()
+    @content.rollback() if @content.get('isDirty')
 
   actions:
     submit: ->

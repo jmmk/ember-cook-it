@@ -1,5 +1,5 @@
 App.User = DS.Model.extend
-  pantry: DS.belongsTo('pantry')
+  pantry: DS.belongsTo('pantry', async: true)
 
   email: DS.attr()
   password: DS.attr()

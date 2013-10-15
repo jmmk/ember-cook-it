@@ -1,4 +1,4 @@
-class Api::V1::RecipesController < ApplicationController
+class Api::RecipesController < ApplicationController
   before_filter :set_recipe, only: [:show, :destroy, :update]
   respond_to :json
 

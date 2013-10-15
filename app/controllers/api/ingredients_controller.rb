@@ -1,4 +1,4 @@
-class Api::V1::IngredientsController < ApplicationController
+class Api::IngredientsController < ApplicationController
   before_filter :set_ingredient, only: [:update, :destroy]
   respond_to :json
 

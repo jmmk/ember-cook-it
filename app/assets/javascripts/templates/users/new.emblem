@@ -4,8 +4,8 @@
 
     form
       = input valueBinding='email' placeholder='Email'
-      = input valueBinding='password' placeholder='Password'
-      = input valueBinding='passwordConfirmation' placeholder='Password Confirmation'
+      = input valueBinding='password' placeholder='Password' type='password'
+      = input valueBinding='passwordConfirmation' placeholder='Password Confirmation' type='password'
 
       button.small.radius.right{action 'submit'}
         |Sign Up

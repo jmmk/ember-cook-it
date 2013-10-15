@@ -31,6 +31,6 @@ App = Ember.Application.create({
 });
 
 App.ApplicationAdapter = DS.ActiveModelAdapter.extend({
-  namespace: 'api/v1'
+  namespace: 'api'
 })
 App.ApplicationSerializer = DS.ActiveModelSerializer.extend()

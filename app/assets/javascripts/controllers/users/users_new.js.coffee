@@ -1,7 +1,7 @@
-App.UsersNewController = Ember.Controller.extend
+App.UsersNewController = Ember.ObjectController.extend
 
   clearUnsavedChanges: ->
-    @content.deleteRecord()
+    @content.rollback() if @content.get('isDirty')
 
   actions:
     submit: ->
