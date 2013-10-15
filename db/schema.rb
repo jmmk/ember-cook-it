@@ -20,8 +20,6 @@ ActiveRecord::Schema.define(version: 20131014213254) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "element_id"
-    t.string   "element_type"
   end
 
   create_table "pantries", force: true do |t|
