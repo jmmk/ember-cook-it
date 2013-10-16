@@ -1,5 +1,7 @@
 EmberCookIt::Application.routes.draw do
 
+  devise_for :users, controllers: { sessions: 'sessions' }
+
   namespace :api do
     resources :recipes, not: [:new, :edit]
     resources :ingredients, only: [:create, :update, :destroy]

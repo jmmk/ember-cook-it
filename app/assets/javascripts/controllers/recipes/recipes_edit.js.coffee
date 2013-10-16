@@ -20,9 +20,9 @@ App.RecipesEditController = Ember.ObjectController.extend(
         ingredient.save()
 
       recipe.save() if recipe.get('isDirty')
-      ingredients.forEach (ingredient) ->
+      ingredients.forEach( (ingredient) ->
         ingredient.save() if ingredient.get('isDirty')
-      .then ->
+      ).then ->
         self.transitionToRoute('recipes.show', recipe)
 
     addIngredient: ->

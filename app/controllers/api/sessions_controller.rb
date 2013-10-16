@@ -22,8 +22,11 @@ class Api::SessionsController < ApplicationController
   end
 
   def show
-    user = User.find(params[:id])
-    render json: user
+    if user_signed_in?
+      render json: current_user
+    else
+      render nothing: true
+    end
   end
 
   def session_params
