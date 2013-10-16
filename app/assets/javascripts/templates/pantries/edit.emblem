@@ -26,4 +26,3 @@
             |Save Pantry
           button.small.radius.right{action 'cancel'}
             |Cancel
-
