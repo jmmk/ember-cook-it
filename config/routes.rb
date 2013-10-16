@@ -1,16 +1,20 @@
 EmberCookIt::Application.routes.draw do
-  # devise_for :users, controllers: { sessions: 'sessions', registrations: 'users' }
+
+  root 'home#index'
 
   namespace :api do
     resources :recipes, except: [:new, :edit]
     resources :ingredients, only: [:create, :update, :destroy]
     resources :users, only: [:create]
     resources :sessions, only: [:create, :destroy]
-    get 'sessions/current' => 'sessions#show'
-    get 'users/current' => 'users#show'
+
+    devise_scope :user do
+      get 'sessions/current' => 'sessions#show'
+      get 'users/current' => 'users#show'
+      delete 'sessions/current' => 'sessions#destroy'
+    end
   end
 
-  root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

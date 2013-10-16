@@ -12,7 +12,7 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    if user_signed_in?
+    if session[:user_id]
       render json: current_user
     else
       render nothing: true
