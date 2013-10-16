@@ -4,11 +4,11 @@ class Api::RecipesController < ApplicationController
 
   def index
     render json: Recipe.order('created_at DESC').limit(5),
-      include: [:ingredients]
+      include: [:recipe_ingredients]
   end
 
   def show
-    render json: @recipe, include: [:ingredients]
+    render json: @recipe, include: [:recipe_ingredients]
   end
 
   def create

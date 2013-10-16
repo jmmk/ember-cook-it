@@ -34,6 +34,7 @@ group :test, :development do
   gem 'pry-rails'
   gem 'quiet_assets'
   gem 'minitest-rails'
+  gem 'minitest-matchers'
   gem 'valid_attribute'
 end
 
