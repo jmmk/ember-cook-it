@@ -16,7 +16,7 @@
       = each recipeIngredients
         .row
           .large-11.columns
-            = input valueBinding='ingredientName' placeholder='New Ingredient'
+            = input valueBinding='name' placeholder='New Ingredient'
           .large-1.columns
             button.tiny.radius{action 'removeIngredient' this}
               |Remove

@@ -2,7 +2,7 @@ App.RecipesNewController = Ember.ObjectController.extend(
   Ember.Validations.Mixin,
 
   clearUnsavedChanges: ->
-    @content.get('ingredients').forEach (ingredient) ->
+    @content.get('recipeIngredients').forEach (ingredient) ->
       ingredient.rollback() if ingredient.get('isDirty')
     @content.rollback() if @content.get('isDirty')
 
@@ -10,7 +10,7 @@ App.RecipesNewController = Ember.ObjectController.extend(
     submit: ->
       self = this
       recipe = @content
-      ingredients = recipe.get('ingredients')
+      ingredients = recipe.get('recipeIngredients')
 
       recipe.save().then ->
         ingredients.invoke('save')
@@ -18,11 +18,11 @@ App.RecipesNewController = Ember.ObjectController.extend(
         self.transitionToRoute('recipes.show', recipe)
 
     addIngredient: ->
-      ingredient = @store.createRecord('ingredient')
-      @content.get('ingredients').pushObject(ingredient)
+      ingredient = @store.createRecord('recipeIngredient')
+      @content.get('recipeIngredients').pushObject(ingredient)
 
     removeIngredient: (ingredient) ->
-      @content.get('ingredients').removeObject(ingredient)
+      @content.get('recipeIngredients').removeObject(ingredient)
       ingredient.deleteRecord()
 
     cancel: ->

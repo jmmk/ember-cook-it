@@ -3,7 +3,7 @@
     h2 = title
 
     h3 Ingredients
-    = each ingredients
+    = each recipeIngredients
       p = name
 
     h3 Directions

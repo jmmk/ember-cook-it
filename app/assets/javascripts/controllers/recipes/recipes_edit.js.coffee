@@ -5,7 +5,7 @@ App.RecipesEditController = Ember.ObjectController.extend(
 
   clearUnsavedChanges: ->
     @deletions.forEach (ingredient) -> ingredient.rollback()
-    @content.get('ingredients').forEach (ingredient) ->
+    @content.get('recipeIngredients').forEach (ingredient) ->
       ingredient.rollback() if ingredient.get('isDirty')
     @content.rollback() if @content.get('isDirty')
 
@@ -13,7 +13,7 @@ App.RecipesEditController = Ember.ObjectController.extend(
     submit: ->
       self = this
       recipe = @content
-      ingredients = recipe.get('ingredients')
+      ingredients = recipe.get('recipeIngredients')
 
       @deletions.forEach (ingredient) ->
         ingredient.deleteRecord()
@@ -26,11 +26,11 @@ App.RecipesEditController = Ember.ObjectController.extend(
         self.transitionToRoute('recipes.show', recipe)
 
     addIngredient: ->
-      ingredient = @store.createRecord('ingredient')
-      @content.get('ingredients').pushObject(ingredient)
+      ingredient = @store.createRecord('recipeIngredient')
+      @content.get('recipeIngredients').pushObject(ingredient)
 
     removeIngredient: (ingredient) ->
-      @content.get('ingredients').removeObject(ingredient)
+      @content.get('recipeIngredients').removeObject(ingredient)
       if ingredient.get('id') then @deletions.push(ingredient) else ingredient.deleteRecord()
 
     cancel: ->

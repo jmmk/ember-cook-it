@@ -1,37 +1,38 @@
-class Api::IngredientsController < ApplicationController
-  before_filter :set_ingredient, only: [:update, :destroy]
-  respond_to :json
+# class Api::IngredientsController < ApplicationController
+#   before_filter :set_ingredient, only: [:update, :destroy]
+#   respond_to :json
 
-  def create
-    @ingredient = Ingredient.new(ingredient_params)
+#   def create
+#     binding.pry
+#     @ingredient = Ingredient.new(ingredient_params)
 
-    if @ingredient.save
-      render json: @ingredient, status: :created
-    else
-      render status: 422
-    end
-  end
+#     if @ingredient.save
+#       render json: @ingredient, status: :created
+#     else
+#       render status: 422
+#     end
+#   end
 
-  def update
-    if @ingredient.update(ingredient_params)
-      render json: @ingredient, status: :ok
-    else
-      render status: 422
-    end
-  end
+#   def update
+#     if @ingredient.update(ingredient_params)
+#       render json: @ingredient, status: :ok
+#     else
+#       render status: 422
+#     end
+#   end
 
-  def destroy
-    @ingredient.destroy
-    render json: @ingredient, status: 204
-  end
+#   def destroy
+#     @ingredient.destroy
+#     render json: @ingredient, status: 204
+#   end
 
-  protected
+#   protected
 
-  def ingredient_params
-    params.require(:ingredient).permit(:name)
-  end
+#   def ingredient_params
+#     params.permit(:name)
+#   end
 
-  def set_ingredient
-    @ingredient = Ingredient.find(params[:id])
-  end
-end
+#   def set_ingredient
+#     @ingredient = Ingredient.find(params[:id])
+#   end
+# end
