@@ -7,7 +7,7 @@ class Api::UsersController < ApplicationController
       Pantry.create(user_id: user.id)
       render json: user, status: :created
     else
-      render status: 422
+      render status: :unprocessable_entity
     end
   end
 

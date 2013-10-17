@@ -18,6 +18,6 @@
               h2 = link-to 'recipes.show' this
                 = title
               p = each recipeIngredients
-                p = ingredientName
+                p = name
         .large-6.columns
           img src='assets/gramsay.jpg'

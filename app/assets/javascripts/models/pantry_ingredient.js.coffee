@@ -1,4 +1,5 @@
 App.PantryIngredient = DS.Model.extend
-  pantryId: DS.attr()
-  ingredientId: DS.attr()
+  pantry: DS.belongsTo('pantry')
+  ingredient: DS.belongsTo('ingredient')
+
   ingredientName: DS.attr()

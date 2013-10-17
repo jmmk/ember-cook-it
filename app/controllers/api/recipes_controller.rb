@@ -17,20 +17,20 @@ class Api::RecipesController < ApplicationController
     if @recipe.save
       render json: @recipe, status: :created
     else
-      render status: 422
+      render status: :unprocessable_entity
     end
   end
 
   def destroy
     @recipe.destroy
-    render json: @recipe, status: 204
+    render json: @recipe, status: :no_content
   end
 
   def update
     if @recipe.update(recipe_params)
       render json: @recipe, status: :ok
     else
-      render status: 422
+      render status: :unprocessable_entity
     end
   end
 
@@ -41,7 +41,7 @@ class Api::RecipesController < ApplicationController
   end
 
   def set_recipe
-    # @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.find(params[:id])
   end
 
 end

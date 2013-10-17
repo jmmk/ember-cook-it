@@ -1,4 +1,4 @@
 App.RecipeIngredient = DS.Model.extend
-  recipeId: DS.attr()
-  ingredientId: DS.attr()
+  recipe: DS.belongsTo('recipe')
+
   name: DS.attr()
