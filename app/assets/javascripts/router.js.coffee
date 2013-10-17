@@ -7,10 +7,10 @@ App.Router.map ()->
   @resource 'users', ->
     @route 'new'
 
+  @resource 'pantry', ->
+    @route 'edit'
+    @route 'show'
+
   @resource 'sessions', ->
     @route 'new'
     @route 'destroy'
-
-  @resource 'pantries', ->
-    @route 'show'
-    @route 'edit'

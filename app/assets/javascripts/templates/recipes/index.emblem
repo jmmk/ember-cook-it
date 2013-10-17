@@ -20,4 +20,8 @@
               p = each recipeIngredients
                 p = name
         .large-6.columns
-          img src='assets/gramsay.jpg'
+          /img src='assets/gramsay.jpg'
+          h1.dark-on-light
+            = link-to 'pantry.show' | Pantry
+          = each pantry.pantryIngredients
+            p = name

@@ -1,9 +1,0 @@
-.row
-  .large-6.large-offset-1.columns
-    h3 Ingredients
-    = each ingredients
-      p = name
-
-    p
-      = link-to 'pantries.edit' this | Edit Pantry |
-      = link-to 'pantries.show' |  Back to Pantry

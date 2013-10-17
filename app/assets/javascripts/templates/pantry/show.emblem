@@ -1,0 +1,9 @@
+.row
+  .large-6.large-offset-1.columns
+    h3 Ingredients
+    = each pantryIngredients
+      p = name
+
+    p
+      = link-to 'pantry.edit' | Edit Pantry |
+      = link-to 'recipes.index' |  Back to Home

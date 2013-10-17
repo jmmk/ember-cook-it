@@ -9,7 +9,7 @@
           h3
             label Ingredients
 
-      = each ingredients
+      = each pantryIngredients
         .row
           .large-11.columns
             = input valueBinding='name' placeholder='New Ingredient'

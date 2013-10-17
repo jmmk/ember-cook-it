@@ -5,6 +5,8 @@ EmberCookIt::Application.routes.draw do
   namespace :api do
     resources :recipes, except: [:new, :edit]
     resources :recipe_ingredients, only: [:create, :update, :destroy]
+    resources :pantry_ingredients, only: [:create, :update, :destroy]
+    resources :pantries, only: [:show]
     resources :users, only: [:create]
     resources :sessions, only: [:create, :destroy]
 
