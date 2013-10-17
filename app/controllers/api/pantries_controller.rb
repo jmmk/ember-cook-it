@@ -2,7 +2,7 @@ class Api::PantriesController < ApplicationController
   respond_to :json
 
   def show
-    @pantry = Pantry.find(params[:id])
+    @pantry = current_user.pantry
     render json: @pantry
   end
 end

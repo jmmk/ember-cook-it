@@ -1,6 +1,6 @@
-App.RecipesIndexRoute = Ember.Route.extend
-  model: ->
-    @store.findAll('recipe')
+App.RecipesFilterRoute = Ember.Route.extend
+  model: (params, queryParams) ->
+    @store.find('recipe', queryParams)
 
   setupController: (controller, model) ->
     controller.set('content', model)

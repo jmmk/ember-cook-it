@@ -21,7 +21,8 @@
 //= require app
 // require ember-easyForm-1.0.0.beta.1
 
-// for more details see: http://emberjs.com/guides/application/
+Ember.FEATURES["query-params"] = true;
+
 App = Ember.Application.create({
   ready: function() {
     Ember.run.next(this, function(){

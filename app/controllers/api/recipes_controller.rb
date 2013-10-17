@@ -3,12 +3,19 @@ class Api::RecipesController < ApplicationController
   respond_to :json
 
   def index
-    render json: Recipe.order('created_at DESC').limit(5),
-      include: [:recipe_ingredients]
+    if params[:pantry]
+      @pantry_ingredients = PantryIngredient.where(pantry_id: current_user.pantry.id)
+      @recipe_ingredients = RecipeIngredient.where(
+        ingredient_id: @pantry_ingredients.map(&:ingredient_id))
+      @recipes = Recipe.where(id: @recipe_ingredients.map(&:recipe_id))
+    else
+      @recipes =  Recipe.order('created_at DESC').limit(5)
+    end
+    render json: @recipes
   end
 
   def show
-    render json: @recipe, include: [:recipe_ingredients]
+    render json: @recipe
   end
 
   def create

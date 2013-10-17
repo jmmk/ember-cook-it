@@ -9,6 +9,9 @@ nav.top-bar
       li = link-to 'recipes' | Home
       li.divider
       if controllers.currentUser.isSignedIn
+        li
+          a Signed In As: #{controllers.currentUser.email}
+        li.divider
         li = link-to 'sessions.destroy' | Sign Out
         li.divider
       else

@@ -1,6 +1,6 @@
 App.PantryEditRoute = Ember.Route.extend
   model: ->
-    @store.find('pantry', 1)
+    @store.find('pantry', 'current')
 
   setupController: (controller, model) ->
     controller.set('content', model)

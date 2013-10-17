@@ -1,26 +1,17 @@
 .row
-  .large-4.columns
-    h3 = link-to 'recipes.new' | Create New Recipe
-
-  .large-4.large-offset-4.columns
-    form
-      = input type='search' placeholder='Search Recipes...'
-
-.row
   .large-12.columns
     .panel.radius
 
       .row
         .large-6.columns
           .panel.radius
-            h1.dark-on-light Recent Recipes
+            h1.dark-on-light Recipes You Can Make
             = each controller
               h2 = link-to 'recipes.show' this
                 = title
               p = each recipeIngredients
                 p = name
         .large-6.columns
-          /img src='assets/gramsay.jpg'
           h1.dark-on-light = link-to 'pantry.show' | Pantry
           = each pantry.pantryIngredients
             p = name

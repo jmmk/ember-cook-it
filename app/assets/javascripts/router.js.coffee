@@ -3,6 +3,7 @@ App.Router.map ()->
     @route 'new'
     @route 'edit', path: '/:recipe_id/edit'
     @route 'show', path: '/:recipe_id'
+    @route 'filter', queryParams: ['pantry']
 
   @resource 'users', ->
     @route 'new'
