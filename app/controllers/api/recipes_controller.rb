@@ -4,10 +4,7 @@ class Api::RecipesController < ApplicationController
 
   def index
     if params[:pantry]
-      @pantry_ingredients = PantryIngredient.where(pantry_id: current_user.pantry.id)
-      @recipe_ingredients = RecipeIngredient.where(
-        ingredient_id: @pantry_ingredients.map(&:ingredient_id))
-      @recipes = Recipe.where(id: @recipe_ingredients.map(&:recipe_id))
+      @recipes = Recipe.get_top_matches(current_user.pantry)
     else
       @recipes =  Recipe.order('created_at DESC').limit(5)
     end

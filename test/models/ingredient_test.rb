@@ -4,7 +4,6 @@ describe Ingredient do
   subject { Ingredient.new }
 
   it { must have_valid(:name).when('Chicken', 'Rice') }
-  # it { wont have_valid(:name).when('', nil) }
 
   describe 'associations' do
 
