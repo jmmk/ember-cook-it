@@ -1,12 +1,11 @@
 .row
-  .large-6.columns
+  .large-8.columns
     h1 Sign In
-
     form
       = input valueBinding='email' placeholder='Email'
       = input valueBinding='password' placeholder='Password' type='password'
 
       button.small.radius.right{action 'submit'}
         |Sign In
-      button.small.radius.right{action 'cancel'}
-        |Cancel
+
+    a{action 'signUp'} Not Signed Up Yet? Click Here

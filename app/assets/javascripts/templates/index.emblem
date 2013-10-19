@@ -1,0 +1,8 @@
+.row
+  .large-12.columns
+    .panel.radius
+      .row
+        .large-6.columns
+          = outlet recentRecipes
+        .large-6.columns
+          = outlet rightDashboard

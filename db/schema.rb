@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20131014213254) do
   create_table "recipes", force: true do |t|
     t.string   "title",      null: false
     t.text     "directions", null: false
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

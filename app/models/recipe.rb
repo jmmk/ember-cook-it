@@ -2,6 +2,8 @@ class Recipe < ActiveRecord::Base
   has_many :recipe_ingredients, inverse_of: :recipe, dependent: :destroy
   has_many :ingredients, through: :recipe_ingredients
 
+  belongs_to :user, inverse_of: :recipes
+
   validates_presence_of :title
   validates_presence_of :directions
 

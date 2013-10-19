@@ -9,7 +9,10 @@ App.SessionsNewController = Ember.ObjectController.extend
       self = this
       @content.save().then ->
         self.get('controllers.currentUser').set('content', self.content)
-        self.transitionToRoute('recipes.index')
+        self.transitionToRoute('index')
 
     cancel: ->
       @transitionToRoute('recipes.index')
+
+    # signUp: ->
+    #   @transitionToRoute 'users.new'

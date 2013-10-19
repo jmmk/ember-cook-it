@@ -4,5 +4,5 @@ App.RecipesIndexRoute = Ember.Route.extend
 
   setupController: (controller, model) ->
     controller.set('content', model)
-    pantry = @store.find('pantry', 'current')
-    controller.set('pantry', pantry)
+    @store.find('pantry', 'current').then (pantry) ->
+      controller.set('pantry', pantry)

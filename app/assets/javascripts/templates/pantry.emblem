@@ -1,0 +1,5 @@
+.row
+  .large-12.columns
+    .panel.radius
+      h1.dark-on-light Pantry
+      = outlet

@@ -17,5 +17,8 @@ describe Recipe do
     it 'has many ingredients' do
       subject.must_respond_to :ingredients
     end
+    it 'belongs to user' do
+      subject.must_respond_to :user
+    end
   end
 end

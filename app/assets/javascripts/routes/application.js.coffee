@@ -1,4 +1,4 @@
 App.ApplicationRoute = Ember.Route.extend
   setupController: ->
-    user = @store.find('session', 'current')
-    @controllerFor('currentUser').set('content', user)
+    @store.find('session', 'current').then (user) ->
+      @controllerFor('currentUser').set('content', user)

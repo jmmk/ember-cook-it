@@ -1,12 +1,12 @@
 nav.top-bar
   ul.title-area.hide-for-small
     li.name
-      h1.light-on-dark = link-to 'recipes' | Cook-it
+      h1.light-on-dark = link-to 'index' | Cook-it
 
   section.top-bar-section
     ul.right.hide-for-medium-down
       li.divider
-      li = link-to 'recipes' | Home
+      li = link-to 'index' | Home
       li.divider
       if controllers.currentUser.isSignedIn
         li
@@ -22,8 +22,8 @@ nav.top-bar
 
     ul.right.show-for-medium-down
       li.has-dropdown
-        = link-to 'recipes' | Menu
+        = link-to 'index' | Menu
         ul.dropdown
-          li = link-to 'recipes' | Home
-          li = link-to 'recipes' | Sign Up
-          li = link-to 'recipes' | Sign In
+          li = link-to 'index' | Home
+          li = link-to 'users.new' | Sign Up
+          li = link-to 'sessions.new' | Sign In
