@@ -26,5 +26,6 @@ module EmberCookIt
     # config.i18n.default_locale = :de
     config.ember.variant = :development
     config.assets.initialize_on_precompile = false
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end
