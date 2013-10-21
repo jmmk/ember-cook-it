@@ -13,7 +13,6 @@ EmberCookIt::Application.routes.draw do
     devise_scope :user do
       get 'sessions/current' => 'sessions#show'
       get 'users/current' => 'users#show'
-      delete 'sessions/current' => 'sessions#destroy'
     end
   end
 

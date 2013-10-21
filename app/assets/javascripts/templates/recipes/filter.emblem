@@ -1,18 +1,11 @@
 .row
-  .large-12.columns
-    .panel.radius
-
-      .row
-        .large-6.columns
-          .panel.radius
-            h1.dark-on-light Recipes You Can Make
-            = each controller
-              h2 = link-to 'recipes.show' this
-                = title
-              p = each recipeIngredients
-                p = name
-        .large-6.columns
-          h1.dark-on-light = link-to 'pantry.show' | Pantry
-          = each pantry.pantryIngredients
-            p = name
-          button.small{action 'search'} Search Recipes by Pantry
+  .large-6.columns.left-side
+    h1.dark-on-light Best Matches for Your Pantry
+    = each controller
+      h2.title = link-to 'recipes.show' this
+        = title
+      ul.ingredients = each recipeIngredients
+        li
+          h4 = name
+  .large-6.columns
+    = outlet pantry

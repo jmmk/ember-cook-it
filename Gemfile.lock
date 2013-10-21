@@ -56,11 +56,10 @@ GEM
       sass (~> 3.1)
     compass-rails (2.0.alpha.0)
       compass (>= 0.12.2, < 0.14)
-    devise (3.1.1)
+    devise (3.0.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
-      thread_safe (~> 0.1)
       warden (~> 1.2.3)
     ember-data-source (1.0.0.beta.3)
       ember-source
@@ -181,7 +180,7 @@ DEPENDENCIES
   better_errors
   coffee-rails (~> 4.0.0)
   compass-rails (~> 2.0.alpha.0)
-  devise
+  devise (~> 3.0.0)
   ember-data-source (~> 1.0.0.beta.3)
   ember-rails
   ember-source

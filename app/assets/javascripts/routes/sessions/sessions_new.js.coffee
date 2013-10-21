@@ -6,5 +6,5 @@ App.SessionsNewRoute = Ember.Route.extend
     willTransition: ->
       @controllerFor('sessions.new').clearUnsavedChanges()
 
-    signUp: ->
-      @transitionTo 'users.new'
+    # signUp: ->
+    #   @transitionTo 'users.new'

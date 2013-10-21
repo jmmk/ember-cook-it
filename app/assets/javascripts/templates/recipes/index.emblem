@@ -2,9 +2,8 @@
   .large-6.columns
     h1.dark-on-light All Recipes
     = each controller
-      h2 = link-to 'recipes.show' this
+      h2.title = link-to 'recipes.show' this
         = title
-      ul
-      p = each recipeIngredients
+      ul.ingredients = each recipeIngredients
         li
           h4 = name

@@ -1,0 +1,25 @@
+nav.top-bar
+  ul.title-area.hide-for-small
+    li.name
+      h1.light-on-dark = link-to 'dashboard' | Cook-it
+
+  section.top-bar-section
+    ul.left.hide-for-medium-down
+      li = link-to 'recipes.new' | Create New Recipe
+      li = link-to 'recipes.index' | All Recipes
+    ul.right.hide-for-medium-down
+      li = link-to 'dashboard' | Home
+      li
+        a Signed In As: #{controllers.currentUser.email}
+        / ul.dropdown
+        /   li = link-to 'sessions.destroy' | Sign Out
+      li = link-to 'sessions.destroy' | Sign Out
+
+    ul.right.show-for-medium-down
+      li.has-dropdown
+        a Menu
+        ul.dropdown
+          li = link-to 'dashboard' | Home
+          li = link-to 'recipes.new' | Create New Recipe
+          li = link-to 'recipes.index' | All Recipes
+          li = link-to 'sessions.destroy' | Sign Out

@@ -8,7 +8,7 @@
 // ==========================================================================
 
 
- // Version: 1.2.0-beta.1+canary.558f363c
+ // Version: 1.2.0-beta.1+canary.3f58c496
 
 (function() {
 /*global __fail__*/
@@ -194,7 +194,7 @@ if (!Ember.testing) {
 // ==========================================================================
 
 
- // Version: 1.2.0-beta.1+canary.558f363c
+ // Version: 1.2.0-beta.1+canary.3f58c496
 
 (function() {
 var define, requireModule;
@@ -286,10 +286,10 @@ Ember.toString = function() { return "Ember"; };
 /**
   @property VERSION
   @type String
-  @default '1.2.0-beta.1+canary.558f363c'
+  @default '1.2.0-beta.1+canary.3f58c496'
   @final
 */
-Ember.VERSION = '1.2.0-beta.1+canary.558f363c';
+Ember.VERSION = '1.2.0-beta.1+canary.3f58c496';
 
 /**
   Standard environmental variables. You can define these in a global `ENV`
@@ -14140,7 +14140,7 @@ Ember.Observable = Ember.Mixin.create({
 
     ```javascript
     fullName: function() {
-      return this.getEach('firstName', 'lastName').compact().join(' ');
+      return this.get('firstName') + ' ' + this.get('lastName');
     }.property('firstName', 'lastName')
     ```
 
@@ -31534,6 +31534,12 @@ Ember.Router = Ember.Object.extend(Ember.Evented, {
   didTransition: function(infos) {
     updatePaths(this);
 
+    if (Ember.FEATURES.isEnabled("ember-routing-loading-error-substates")) {
+      this._cancelLoadingEvent();
+    } else {
+      exitLegacyLoadingRoute(this);
+    }
+
     this.notifyPropertyChange('url');
 
     if (Ember.FEATURES.isEnabled("ember-routing-didTransition-hook")) {
@@ -31649,6 +31655,11 @@ Ember.Router = Ember.Object.extend(Ember.Evented, {
       seen[name] = true;
 
       if (!handler) {
+        if (Ember.FEATURES.isEnabled("ember-routing-loading-error-substates")) {
+        } else {
+          if (name === 'loading') { return {}; }
+        }
+
         container.register(routeName, DefaultRoute.extend());
         handler = container.lookup(routeName);
 
@@ -31718,9 +31729,13 @@ Ember.Router = Ember.Object.extend(Ember.Evented, {
 
     var transitionPromise = this.router[method].apply(this.router, args);
 
-    transitionPromise.then(function(route) {
-      self._transitionCompleted(route);
-    }, function(error) {
+    // Don't schedule loading state entry if user has already aborted the transition.
+    if (Ember.FEATURES.isEnabled("ember-routing-loading-error-substates")) {
+    } else {
+      scheduleLegacyLoadingRouteEntry(this);
+    }
+
+    transitionPromise.then(null, function(error) {
       if (error.name === "UnrecognizedURLError") {
         Ember.assert("The URL '" + error.message + "' did not match any routes in your application");
       }
@@ -31733,21 +31748,24 @@ Ember.Router = Ember.Object.extend(Ember.Evented, {
   },
 
   _scheduleLoadingEvent: function(transition, originRoute) {
-    if (this._loadingStateTimer) {
-      Ember.run.cancel(this._loadingStateTimer);
+    this._cancelLoadingEvent();
+    if (Ember.FEATURES.isEnabled("ember-routing-loading-error-substates")) {
+      this._loadingStateTimer = Ember.run.scheduleOnce('routerTransitions', this, '_fireLoadingEvent', transition, originRoute);
     }
-
-    this._loadingStateTimer = Ember.run.scheduleOnce('routerTransitions', this, '_fireLoadingEvent', transition, originRoute);
   },
 
   _fireLoadingEvent: function(transition, originRoute) {
-    if (transition !== this.router.activeTransition) {
-      // Don't fire an event if we've since moved on from
-      // the transition that put us in a loading state.
-      return;
-    }
+    if (Ember.FEATURES.isEnabled("ember-routing-loading-error-substates")) {
+      if (!this.router.activeTransition) {
+        // Don't fire an event if we've since moved on from
+        // the transition that put us in a loading state.
+        return;
+      }
 
-    transition.trigger(true, 'loading', transition, originRoute);
+      transition.trigger(true, 'loading', transition, originRoute);
+    } else {
+      enterLegacyLoadingRoute(this);
+    }
   },
 
   _cancelLoadingEvent: function () {
@@ -31755,11 +31773,6 @@ Ember.Router = Ember.Object.extend(Ember.Evented, {
       Ember.run.cancel(this._loadingStateTimer);
     }
     this._loadingStateTimer = null;
-  },
-
-  _transitionCompleted: function(route) {
-    this.notifyPropertyChange('url');
-    this._cancelLoadingEvent();
   }
 });
 
@@ -31807,6 +31820,41 @@ function updatePaths(router) {
   }
 
   set(appController, 'currentRouteName', infos[infos.length - 1].name);
+}
+
+function scheduleLegacyLoadingRouteEntry(router) {
+  cancelLegacyLoadingRouteEntry(router);
+  if (router.router.activeTransition) {
+    router._legacyLoadingStateTimer = Ember.run.scheduleOnce('routerTransitions', null, enterLegacyLoadingRoute, router);
+  }
+}
+
+function enterLegacyLoadingRoute(router) {
+  var loadingRoute = router.router.getHandler('loading');
+  if (loadingRoute && !loadingRoute._loadingStateActive) {
+    if (loadingRoute.enter) { loadingRoute.enter(); }
+    if (loadingRoute.setup) { loadingRoute.setup(); }
+    loadingRoute._loadingStateActive = true;
+  }
+}
+
+function cancelLegacyLoadingRouteEntry(router) {
+  if (router._legacyLoadingStateTimer) {
+    Ember.run.cancel(router._legacyLoadingStateTimer);
+  }
+  router._legacyLoadingStateTimer = null;
+}
+
+function exitLegacyLoadingRoute(router) {
+
+  cancelLegacyLoadingRouteEntry(router);
+
+  var loadingRoute = router.router.getHandler('loading');
+
+  if (loadingRoute && loadingRoute._loadingStateActive) {
+    if (loadingRoute.exit) { loadingRoute.exit(); }
+    loadingRoute._loadingStateActive = false;
+  }
 }
 
 Ember.Router.reopenClass({
@@ -31880,12 +31928,13 @@ var defaultActionHandlers = {
   },
 
   error: function(error, transition, originRoute) {
-
-    if (this !== originRoute) {
-      var childErrorRouteName = findChildRouteName(this, 'error');
-      if (childErrorRouteName) {
-        this.intermediateTransitionTo(childErrorRouteName, error);
-        return;
+    if (Ember.FEATURES.isEnabled("ember-routing-loading-error-substates")) {
+      if (this !== originRoute) {
+        var childErrorRouteName = findChildRouteName(this, 'error');
+        if (childErrorRouteName) {
+          this.intermediateTransitionTo(childErrorRouteName, error);
+          return;
+        }
       }
     }
 
@@ -31897,17 +31946,19 @@ var defaultActionHandlers = {
   },
 
   loading: function(transition, originRoute) {
-    if (this === originRoute) {
-      // This is the route with the error; just bubble
-      // so that the parent route can look up its child loading route.
-      return true;
-    }
+    if (Ember.FEATURES.isEnabled("ember-routing-loading-error-substates")) {
+      if (this === originRoute) {
+        // This is the route with the error; just bubble
+        // so that the parent route can look up its child loading route.
+        return true;
+      }
 
-    var childLoadingRouteName = findChildRouteName(this, 'loading');
-    if (childLoadingRouteName) {
-      this.intermediateTransitionTo(childLoadingRouteName);
-    } else if (transition.pivotHandler !== this) {
-      return true;
+      var childLoadingRouteName = findChildRouteName(this, 'loading');
+      if (childLoadingRouteName) {
+        this.intermediateTransitionTo(childLoadingRouteName);
+      } else if (transition.pivotHandler !== this) {
+        return true;
+      }
     }
   }
 };
@@ -32708,6 +32759,7 @@ Ember.Route = Ember.Object.extend(Ember.ActionHandler, {
     instance would be used.
 
     Example
+    
     ```js
     App.PostRoute = Ember.Route.extend({
       setupController: function(controller, model) {

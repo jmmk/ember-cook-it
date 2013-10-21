@@ -10,8 +10,11 @@ App.Router.map ()->
 
   @resource 'pantry', ->
     @route 'edit'
-    @route 'show'
+    @route 'current'
+    @route 'example'
 
   @resource 'sessions', ->
     @route 'new'
     @route 'destroy'
+
+  @route 'dashboard'

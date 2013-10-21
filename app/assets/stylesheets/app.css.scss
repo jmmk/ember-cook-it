@@ -1,0 +1,24 @@
+//top-bar
+li.name {
+  padding-left: 7.5em;
+}
+ul.right {
+  padding-right: 8.2em;
+}
+
+.left-side {
+  border-right: 1px solid;
+}
+
+//ingredient lists
+ul.ingredients {
+  padding-left: 1em;
+}
+
+//misc text
+.dark-on-light {
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.15), 0 1px 0 rgba(255,255,255,0.8);
+}
+.light-on-dark {
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.4);
+}

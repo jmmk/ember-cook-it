@@ -1,4 +1,5 @@
 App.RecipesShowController = Ember.ObjectController.extend
+  needs: 'currentUser'
 
   actions:
     delete: ->

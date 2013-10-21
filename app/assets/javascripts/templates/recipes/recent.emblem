@@ -1,6 +1,7 @@
 h1.dark-on-light Recent Recipes
 = each controller
-  h2 = link-to 'recipes.show' this
+  h2.title = link-to 'recipes.show' this
     = title
-  p = each recipeIngredients
-    p = name
+  ul.ingredients = each recipeIngredients
+    li
+      h4 = name

@@ -3,10 +3,14 @@ class Api::RecipesController < ApplicationController
   respond_to :json
 
   def index
-    if params[:pantry]
+    if params[:pantry] == 'current'
       @recipes = Recipe.get_top_matches(current_user.pantry)
-    else
+    elsif params[:pantry] == 'example'
+      @recipes = Recipe.get_top_matches(Pantry.find(1))
+    elsif params[:type] == 'recent'
       @recipes =  Recipe.order('created_at DESC').limit(5)
+    else
+      @recipes = Recipe.all
     end
     render json: @recipes
   end

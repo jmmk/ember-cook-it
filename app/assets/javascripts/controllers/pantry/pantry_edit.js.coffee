@@ -19,7 +19,7 @@ App.PantryEditController = Ember.ObjectController.extend
       ingredients.forEach( (ingredient) ->
         ingredient.save() if ingredient.get('isDirty')
       ).then ->
-        self.transitionToRoute('pantry.show')
+        self.transitionToRoute('dashboard')
 
     addIngredient: ->
       ingredient = @store.createRecord('pantryIngredient')
@@ -31,10 +31,4 @@ App.PantryEditController = Ember.ObjectController.extend
 
     cancel: ->
       pantry = @content
-      @transitionToRoute('pantry.show')
-
-  validations:
-    title:
-      presence: true
-    directions:
-      presence: true
+      @transitionToRoute('dashboard')

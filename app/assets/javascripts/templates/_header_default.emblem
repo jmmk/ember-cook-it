@@ -5,24 +5,13 @@ nav.top-bar
 
   section.top-bar-section
     ul.right.hide-for-medium-down
-      li.divider
       li = link-to 'index' | Home
-      li.divider
-      if controllers.currentUser.isSignedIn
-        li
-          a Signed In As: #{controllers.currentUser.email}
-        li.divider
-        li = link-to 'sessions.destroy' | Sign Out
-        li.divider
-      else
-        li = link-to 'users.new' | Sign Up
-        li.divider
-        li = link-to 'sessions.new' | Sign In
-        li.divider
+      li = link-to 'users.new' | Sign Up
+      li = link-to 'sessions.new' | Sign In
 
     ul.right.show-for-medium-down
       li.has-dropdown
-        = link-to 'index' | Menu
+        a Menu
         ul.dropdown
           li = link-to 'index' | Home
           li = link-to 'users.new' | Sign Up

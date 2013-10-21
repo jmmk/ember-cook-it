@@ -1,0 +1,11 @@
+.row
+  .large-6.columns
+    h1.dark-on-light Pantry
+    ul.ingredients = each pantryIngredients
+      li
+        h4 = name
+
+    br
+    p
+      = link-to 'pantry.edit' | Add More Ingredients to Your Pantry
+    button.small{action 'search'} What Can I Cook?

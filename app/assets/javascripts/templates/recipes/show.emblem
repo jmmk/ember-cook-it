@@ -1,16 +1,12 @@
 .row
-  .large-6.large-offset-1.columns
-    h2 = title
-
-    ul
-    = each recipeIngredients
+  .large-5.large-offset-1.columns
+    h1.title = title
+    ul.ingredients = each recipeIngredients
       li
         h4 = name
-
-    br
-    p = directions
+    p
+      h5 = directions
 
     p
       = link-to 'recipes.edit' this | Edit |
-      a{action 'delete'}  Delete |
-      = link-to 'recipes.index' |  Back to Recipes
+      a{action 'delete'}  Delete
