@@ -59,3 +59,5 @@ gem 'slim'
 gem 'compass-rails', "~> 2.0.alpha.0"
 gem 'zurb-foundation'
 gem 'devise', '~> 3.0.0'
+gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
+

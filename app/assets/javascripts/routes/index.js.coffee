@@ -1,7 +1,12 @@
 App.IndexRoute = Ember.Route.extend
-  setupController: ->
-    @controllerFor('recipesRecent').set('content',
-      @store.find('recipe', type: 'recent' ))
+  model: ->
+    @store.find('recipe', type: 'recent')
+
+  setupController: (controller, model) ->
+    model.forEach (recipe) ->
+      topFive = recipe.get('recipeIngredients').objectsAt([0, 1, 2, 3, 4]).compact()
+      recipe.set('topFive', topFive)
+    @controllerFor('recipesRecent').set('content', model)
     @controllerFor('pantryExample').set('content', @store.find('pantry', 'example'))
 
   renderTemplate: ->

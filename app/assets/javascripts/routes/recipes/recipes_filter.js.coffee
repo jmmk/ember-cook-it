@@ -3,9 +3,11 @@ App.RecipesFilterRoute = Ember.Route.extend
     @store.find('recipe', queryParams)
 
   setupController: (controller, model, queryParams) ->
+    model.forEach (recipe) ->
+      topFive = recipe.get('recipeIngredients').objectsAt([0, 1, 2, 3, 4]).compact()
+      recipe.set('topFive', topFive)
     controller.set('content', model)
-    @store.find('pantry', queryParams.pantry).then (pantry) ->
-      controller.set('pantry', pantry)
+    @controllerFor('pantryExample').set('content', @store.find('pantry', queryParams.pantry))
 
   renderTemplate: (controller, model, queryParams) ->
     pantry = queryParams.pantry
