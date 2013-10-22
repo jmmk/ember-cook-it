@@ -1,7 +1,7 @@
-## Ember Cook-it
+# Ember Cook-it
 
 Recipe Storage and Search application written in
-[Ember.js](http://www.emberjs.com), and  
+[Ember.js](http://www.emberjs.com) and
 [Rails](http://rubyonrails.org/) using the 
 [ember-rails](https://github.com/emberjs/ember-rails) gem.
 
