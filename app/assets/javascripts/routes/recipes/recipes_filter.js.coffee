@@ -2,10 +2,13 @@ App.RecipesFilterRoute = Ember.Route.extend
   model: (params, queryParams) ->
     @store.find('recipe', queryParams)
 
-  setupController: (controller, model, queryParams) ->
+  afterModel: (model) ->
     model.forEach (recipe) ->
-      topFive = recipe.get('recipeIngredients').objectsAt([0, 1, 2, 3, 4]).compact()
-      recipe.set('topFive', topFive)
+      recipe.get('recipeIngredients').then (recipeIngredients) ->
+        topFive = recipeIngredients.objectsAt([0, 1, 2, 3, 4]).compact()
+        recipe.set('topFive', topFive)
+
+  setupController: (controller, model, queryParams) ->
     controller.set('content', model)
     @controllerFor('pantryExample').set('content', @store.find('pantry', queryParams.pantry))
 

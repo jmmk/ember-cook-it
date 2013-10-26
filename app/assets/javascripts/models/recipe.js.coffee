@@ -1,5 +1,5 @@
 App.Recipe = DS.Model.extend
-  recipeIngredients: DS.hasMany('recipeIngredient')
+  recipeIngredients: DS.hasMany('recipeIngredient', async: true)
   user: DS.belongsTo('user')
 
   title: DS.attr()

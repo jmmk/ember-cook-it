@@ -22,7 +22,7 @@
 // require ember-data-factory-1.0.0.min.js
 // require ember-easyForm-1.0.0.beta.1
 
-Ember.FEATURES["query-params"] = true;
+Ember.FEATURES['query-params'] = true;
 
 App = Ember.Application.create({
   ready: function() {

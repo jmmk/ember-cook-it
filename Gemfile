@@ -51,9 +51,7 @@ gem 'rails_12factor', group: :production
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-gem 'ember-source'
-gem 'ember-rails'
-gem "ember-data-source", "~> 1.0.0.beta.3"
+gem 'ember-rails', github: 'emberjs/ember-rails'
 gem 'emblem-rails'
 gem 'slim'
 gem 'compass-rails', "~> 2.0.alpha.0"

@@ -2,10 +2,13 @@ App.IndexRoute = Ember.Route.extend
   model: ->
     @store.find('recipe', type: 'recent')
 
-  setupController: (controller, model) ->
+  afterModel: (model) ->
     model.forEach (recipe) ->
-      topFive = recipe.get('recipeIngredients').objectsAt([0, 1, 2, 3, 4]).compact()
-      recipe.set('topFive', topFive)
+      recipe.get('recipeIngredients').then (recipeIngredients) ->
+        topFive = recipeIngredients.objectsAt([0, 1, 2, 3, 4]).compact()
+        recipe.set('topFive', topFive)
+
+  setupController: (controller, model) ->
     @controllerFor('recipesRecent').set('content', model)
     @controllerFor('pantryExample').set('content', @store.find('pantry', 'example'))
 
@@ -21,22 +24,3 @@ App.IndexRoute = Ember.Route.extend
       into: 'index'
       outlet: 'pantryExample'
       controller: 'pantryExample'
-
-  # actions:
-    # signIn: ->
-    #   @render 'sessions.new',
-    #     into: 'index'
-    #     outlet: 'rightDashboard'
-    #     controller: 'sessionsNew'
-    #   @controllerFor('users.new').clearUnsavedChanges()
-
-    # signUp: ->
-    #   @render 'users.new',
-    #     into: 'index'
-    #     outlet: 'rightDashboard'
-    #     controller: 'usersNew'
-    #   @controllerFor('sessions.new').clearUnsavedChanges()
-
-    # willTransition: ->
-      # @controllerFor('users.new').clearUnsavedChanges()
-      # @controllerFor('sessions.new').clearUnsavedChanges()
