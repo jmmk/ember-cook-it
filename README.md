@@ -18,6 +18,7 @@ Clone this repo, `cd` in the new directory, then:
 
     bundle install
     rake db:migrate
+    cp config/database.example.yml config/database.yml
  
 To run a local server:
 
